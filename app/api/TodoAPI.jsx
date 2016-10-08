@@ -29,7 +29,11 @@ const filterTodos = (todos, showCompleted, searchText) =>{
         filteredTodos = filteredTodos.filter((todo) => {
            return !todo.completed || showCompleted;
         });
-    //filter by searchText
+    // Filter by searchText
+    filteredTodos = filteredTodos.filter((todo) => {
+        var text = todo.text.toLowerCase();
+        return searchText.length === 0 || text.indexOf(searchText) > -1;
+    });
 
     //Sort todos with non-completed first
         filteredTodos.sort((a,b) => {
