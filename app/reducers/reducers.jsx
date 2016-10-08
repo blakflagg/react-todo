@@ -33,14 +33,8 @@ export var todosReducer = (state = [], action) => {
                     createdAt: moment().unix(),
                     completedAt: undefined
                 }
-            ]
-        default:
-            return state;
-    }
-};
+            ];
 
-export var toggleTodo = (state = false ,action) => {
-    switch(action.type){
         case 'TOGGLE_TODO':
             return state.map((todo) => {
                 if(todo.id === action.id){
@@ -50,6 +44,8 @@ export var toggleTodo = (state = false ,action) => {
                         completed: nextCompleted,
                         completedAt: nextCompleted ? moment().unix(): undefined
                     }
+                }else {
+                    return todo;
                 }
             });
         default:

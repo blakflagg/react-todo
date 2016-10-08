@@ -43,20 +43,7 @@ export default class TodoApp extends Component{
                         searchText : searchText.toLowerCase()
         });
     }
-    handleToggle = (id) => {
-        var updatedTodos = this.state.todos.map((todo) => {
 
-            if(todo.id === id){
-                todo.completed = !todo.completed;
-                todo.completedAt = todo.completed ? moment().unix() : undefined;
-            }
-
-            return todo;
-        })
-
-        this.setState({todos: updatedTodos});
-
-    }
 
     render(){
         var filteredTodos = TodoAPI.filterTodos(this.state.todos, this.state.showCompleted,this.state.searchText)
@@ -68,7 +55,7 @@ export default class TodoApp extends Component{
                     <div className="column small-centered small-11 medium-6 larget-5">
                         <div className="container">
                             <TodoSearch onSearch={this.handleSearch}/>
-                            <TodoList todos={filteredTodos} onToggle={this.handleToggle}/>
+                            <TodoList />
                             <AddTodo onAddTodo={this.handleAddTodo}/>
                         </div>
                     </div>
