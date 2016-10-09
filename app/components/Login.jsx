@@ -1,6 +1,13 @@
 import React, {Component} from 'react';
+import * as Redux from 'react-redux';
+import * as actions from 'actions';
 
-class Login extends Component {
+export class Login extends Component {
+
+    onLogin = () =>{
+      var {dispatch} = this.props;
+        dispatch(actions.startLogin());
+    }
 
     render(){
         return (
@@ -11,7 +18,7 @@ class Login extends Component {
                         <div className="callout callout-auth" >
                             <h3>Login</h3>
                             <p>Login with GitHub account below</p>
-                            <button className="button">Login with Github</button>
+                            <button className="button" onClick={this.onLogin}>Login with Github</button>
                         </div>
                     </div>
                 </div>
@@ -20,4 +27,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default Redux.connect()(Login);
