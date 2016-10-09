@@ -7,23 +7,14 @@ import TodoSearch from 'TodoSearch';
 
 export default class TodoApp extends Component{
 
-/*    constructor(props){
-        super(props)
-        const todosArray = TodoAPI.getTodos();
-
-        this.state = {
-          todos: todosArray,
-            showCompleted: false,
-            searchText: ''
-        };
-    }*/
-
-
 
     render(){
 
         return (
             <div>
+                <div className="page-actions">
+                    <a href="#">Log Out</a>
+                </div>
                <h1 className="page-title">Todo App</h1>
 
                 <div className="row">

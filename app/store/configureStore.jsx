@@ -1,4 +1,5 @@
 import * as redux from 'redux';
+import thunk from 'redux-thunk';
 import {searchTextReducer, showCompletedReducer,todosReducer } from 'reducers';
 
 export var configure = () => {
@@ -8,7 +9,9 @@ export var configure = () => {
         todos: todosReducer
     });
 
-    var store = redux.createStore(reducer);
+    var store = redux.createStore(reducer,redux.compose(
+        redux.applyMiddleware(thunk)
+    ));
 
 
     return store;
