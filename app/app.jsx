@@ -10,16 +10,20 @@ import * as actions from 'actions';
 import firebase from 'app/firebase/';
 
 firebase.auth().onAuthStateChanged((user) => {
+
     if(user){
-        hashHistory.push('/todos');
+        store.dispatch(actions.login(user.uid))
+        store.dispatch(actions.startAddTodos());
+;        hashHistory.push('/todos');
     }else{
+        store.dispatch(actions.logout());
         hashHistory.push('/');
     }
 })
 var store = require('configureStore').configure();
 
 
-store.dispatch(actions.startAddTodos());
+
 
 //Load foundation-sites
 require('style!css!foundation-sites/dist/foundation.min.css');
